@@ -105,6 +105,32 @@ resource "azurerm_network_security_group" "sg_aula" {
         destination_address_prefix = "*"
     }
 
+
+  security_rule {
+        name                       = "MySqlOutbound"
+        priority                   = 1004
+        direction                  = "Outbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "3306"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
+
+
+  security_rule {
+        name                       = "MySqlInbound"
+        priority                   = 1004
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "3306"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
+
     tags = {
         environment = "aula infra"
     }
